@@ -2,6 +2,8 @@ import sys
 
 import pygame
 
+# from settings import Settings
+
 from ex1_blue_sky import Settings
 
 from ship import Ship
