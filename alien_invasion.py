@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from Ex1-Blue_sky import Settings
+from ex1_blue_sky import Settings
 
 from ship import Ship
 
