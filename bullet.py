@@ -1,7 +1,8 @@
 import pygame
-from pygame import sprite
+from pygame.sprite import Sprite
 
-class Bullet(sprite):
+
+class Bullet(Sprite):
     """A class to manage the bullets fired from the ship"""
 
     def __init__(self, ai_game):
