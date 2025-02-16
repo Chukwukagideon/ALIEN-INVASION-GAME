@@ -1,5 +1,6 @@
 import sys
 
+import aliens
 import pygame
 
 from settings import Settings
@@ -81,7 +82,9 @@ class AlienInvasion:
                 self.bullets.remove(bullet)
 
     def _update_aliens(self):
-        """Update the positions of all aliens in the fleet"""
+        """Check if the fleet is at am edge, then
+        Update the positions of all aliens in the fleet"""
+        self._check_fleet_edges()
         self.aliens.update()
 
     def _create_fleet(self):
@@ -112,6 +115,19 @@ class AlienInvasion:
         alien.rect.x = alien.x
         alien.rect.y = alien_height + 2 * alien_height * row_number
         self.aliens.add(alien)
+
+    def _check_fleet_edges(self):
+        """Respond appropriately when the fleet has reached an end"""
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+
+    def _change_fleet_direction(self):
+        """Drop the entire fleet and change its direction"""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
     def _update_screen(self):
         # Redraw the screen during each pass through the loop
