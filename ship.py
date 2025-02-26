@@ -18,9 +18,12 @@ class Ship:
         # Store a decimal value for the ship's horizontal position
         self.x = float(self.rect.x)
 
+        self.y = float(self.rect.y)
+
         # Movement Flag
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
 
 
     def update_position(self):
@@ -30,6 +33,8 @@ class Ship:
             self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
+        # if self.moving_up and self.rect.midbottom:
+        #     self.y += self.settings.ship_speed
 
         # Update rect object from self.x
         self.rect.x = self.x
